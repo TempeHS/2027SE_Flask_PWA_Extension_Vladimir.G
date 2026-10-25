@@ -1169,7 +1169,7 @@ document.addEventListener("DOMContentLoaded", function () {
       element,
       NodeFilter.SHOW_TEXT,
       null,
-      false
+      false,
     );
     let node;
     while ((node = walker.nextNode())) {
@@ -1182,7 +1182,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const text = node.nodeValue;
         const highlightedText = text.replace(
           regex,
-          '<span class="highlight">$1</span>'
+          '<span class="highlight">$1</span>',
         );
         if (highlightedText !== text) {
           const tempDiv = document.createElement("div");
