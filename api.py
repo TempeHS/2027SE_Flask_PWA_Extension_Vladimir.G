@@ -25,5 +25,16 @@ def post():
     return data, 201
 
 
+def get():
+    # For security data is validated on entry
+    if request.args.get("lang") and request.args.get("lang").isalpha():
+        lang = request.args.get("lang")
+        lang = lang.upper()
+        content = dbHandler.extension_get(lang)
+    else:
+        content = dbHandler.extension_get("%")
+    return (content), 200
+
+
 if __name__ == "__main__":
     api.run(debug=True, host="0.0.0.0", port=3000)
