@@ -11,6 +11,15 @@ from flask import current_app
 
 import database_manager as dbHandler
 
+api_log = logging.getLogger(__name__)
+logging.basicConfig(
+    filename="api_security_log.log",
+    encoding="utf-8",
+    level=logging.DEBUG,
+    format="%(asctime)s %(message)s",
+)
+
+
 api = Flask(__name__)
 cors = CORS(api)
 api.config["CORS_HEADERS"] = "Content-Type"
@@ -25,10 +34,16 @@ limiter = Limiter(
 @api.route("/add_extension", methods=["POST"])
 @limiter.limit("1/second", override_defaults=False)
 def post():
-    data = request.get_json()
-    return data, 201
+    if request.headers.get("Authorisation") == auth_key:
+        data = request.get_json()
+        response = dbHandler.extension_add(data)
+        return response
+    else:
+        return {"error": "Unauthorised"}, 401
 
 
+@api.route("/", methods=["GET"])
+@limiter.limit("3/second", override_defaults=False)
 def get():
     # For security data is validated on entry
     if request.args.get("lang") and request.args.get("lang").isalpha():
