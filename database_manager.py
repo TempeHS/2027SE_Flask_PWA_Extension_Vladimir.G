@@ -20,3 +20,8 @@ def extension_get(lang):
             for row in cur.fetchall()
         ]
     return jsonify(migrate_data)
+
+
+def extension_add(response):
+    data = response
+    return data, 200
