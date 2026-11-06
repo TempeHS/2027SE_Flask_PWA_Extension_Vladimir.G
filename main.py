@@ -7,6 +7,14 @@ from flask_wtf import CSRFProtect
 from flask_csp.csp import csp_header
 import logging
 
+app_log = logging.getLogger(__name__)
+logging.basicConfig(
+    filename="main_security_log.log",
+    encoding="utf-8",
+    level=logging.DEBUG,
+    format="%(asctime)s %(message)s",
+)
+
 app = Flask(__name__)
 csrf = CSRFProtect(app)
 app.secret_key = b"6HlQfWhu03PttohW"
