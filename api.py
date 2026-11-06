@@ -11,6 +11,8 @@ from flask import current_app
 
 import database_manager as dbHandler
 
+auth_key = "4L50v92nOgcDCYUM"
+
 api_log = logging.getLogger(__name__)
 logging.basicConfig(
     filename="api_security_log.log",
