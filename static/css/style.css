@@ -1,5 +1,193 @@
+/* Search highlight (required by the search feature) */
 .highlight {
   background-color: yellow;
   border-radius: 20px;
   border: 1px yellow solid;
+}
+
+/* Page colours */
+:root {
+  --accent: #7c3aed;
+  --accent-dark: #5b21b6;
+  --accent-light: #ede9fe;
+  --ink: #1e1b4b;
+}
+
+body {
+  background: linear-gradient(180deg, #f5f3ff 0%, #ffffff 40%);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+/* Heading box */
+body .bg-body-tertiary.rounded-3 {
+  background: linear-gradient(135deg, var(--accent), #2563eb) !important;
+  color: #ffffff;
+  box-shadow: 0 10px 30px rgba(91, 33, 182, 0.25);
+}
+
+body .display-4 {
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+body .lead {
+  opacity: 0.9;
+}
+
+/* Menu */
+body .navbar {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+body .nav-link {
+  border-radius: 8px;
+  margin: 0 2px;
+  transition: background-color 0.2s ease;
+}
+
+body .nav-link:hover {
+  background-color: var(--accent-light);
+}
+
+body .nav-link.active {
+  background-color: var(--accent-light);
+  font-weight: 700;
+  color: var(--accent-dark);
+}
+
+/* Buttons */
+body .btn-primary {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  transition:
+    transform 0.15s ease,
+    background-color 0.15s ease;
+}
+
+body .btn-primary:hover,
+body .btn-primary:focus {
+  background-color: var(--accent-dark);
+  border-color: var(--accent-dark);
+  transform: translateY(-2px);
+}
+
+body .btn-group {
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+body .btn-group > .btn {
+  border-radius: 999px !important;
+}
+
+body .btn-secondary {
+  border-radius: 999px;
+}
+
+/* Extension cards */
+body .card {
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+body .card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(91, 33, 182, 0.25);
+}
+
+body .card-img-top {
+  background-color: var(--accent-light);
+  padding: 1.5rem;
+  max-height: 180px;
+  object-fit: contain;
+}
+
+body .card-title {
+  font-weight: 700;
+}
+
+/* Add Extension form */
+body form.box {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+body .form-control:focus,
+body .form-select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 0.25rem rgba(124, 58, 237, 0.25);
+}
+
+/* Footer link */
+body a {
+  color: var(--accent-dark);
+}
+
+body .btn,
+body .nav-link,
+body .navbar-brand {
+  text-decoration: none;
+}
+
+/* Languages page */
+body .languages-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+body .languages-header .display-5 {
+  font-weight: 800;
+  color: var(--accent-dark);
+}
+
+body a.language-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 140px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  border-bottom: 5px solid var(--accent);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  color: var(--ink);
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+body a.language-card:hover,
+body a.language-card:focus {
+  background-color: var(--accent);
+  color: #ffffff;
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(91, 33, 182, 0.3);
+}
+
+body .language-name {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+body .language-arrow {
+  font-size: 0.85rem;
+  margin-top: 0.4rem;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+body a.language-card:hover .language-arrow,
+body a.language-card:focus .language-arrow {
+  opacity: 1;
 }

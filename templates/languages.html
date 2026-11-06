@@ -1,0 +1,25 @@
+{% extends 'layout.html' %} {% block content %}
+<div class="container py-4">
+  <div class="row">
+    <div class="languages-header">
+      <h1 class="display-5">Languages</h1>
+      <p class="lead">Pick a language to see its extensions.</p>
+    </div>
+    {% if languages %} {% for language in languages %}
+    <div class="col-6 col-md-4 col-lg-3 mb-4">
+      <a class="language-card" href="/?lang={{ language | lower }}">
+        <span class="language-name">{{ language }}</span>
+        <span class="language-arrow">View extensions &rarr;</span>
+      </a>
+    </div>
+    {% endfor %} {% else %}
+    <p class="text-danger">Could not load the languages from the API.</p>
+    {% endif %}
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <a class="btn btn-secondary" href="/">&larr; Back to all extensions</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -22,6 +22,14 @@ def extension_get(lang):
     return jsonify(migrate_data)
 
 
+def get_languages():
+    with sql.connect("database/data_source.db") as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT DISTINCT language FROM extension")
+        data = [row[0] for row in cursor.fetchall()]
+    return jsonify(data)
+
+
 def extension_add(data):
     if validate_json(data):
         with sql.connect("database/data_source.db") as con:
@@ -40,7 +48,6 @@ def extension_add(data):
         return jsonify({"message": "Extension added successfully"}), 201
     else:
         return jsonify({"error": "Invalid JSON"}), 400
-        return {"error": "Invalid JSON"}, 400
 
 
 schema = {

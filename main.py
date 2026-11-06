@@ -103,5 +103,14 @@ def form():
         return render_template("/add.html", data={})
 
 
+@app.route("/languages.html", methods=["GET"])
+def languages_page():
+    try:
+        languages = requests.get("http://127.0.0.1:3000/languages").json()
+    except requests.exceptions.RequestException:
+        languages = []
+    return render_template("/languages.html", languages=languages)
+
+
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5000)

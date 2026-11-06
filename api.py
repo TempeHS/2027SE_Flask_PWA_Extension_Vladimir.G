@@ -44,6 +44,12 @@ def post():
         return {"error": "Unauthorised"}, 401
 
 
+@api.route("/languages", methods=["GET"])
+@limiter.limit("3/second", override_defaults=False)
+def languages():
+    return dbHandler.get_languages(), 200
+
+
 @api.route("/", methods=["GET"])
 @limiter.limit("3/second", override_defaults=False)
 def get():
